@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-label class="header">Custom League</ion-label>
+    <ion-buttons slot="secondary">
+      <ion-button href="/tabs/settings">
+        <ion-icon slot="icon-only" src="../../assets/icons/tools.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">
+      League Name
+    </ion-label>
+    <ion-input [(ngModel)]="newLeagueName" type="text"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header>
+      Members
+    </ion-list-header>
+    <ion-item lines="inset" *ngFor="let member of newMembers">
+      <ion-label>
+        {{ member }}
+      </ion-label>
+      <ion-button slot="end" color="danger" (click)="removeMember(member)" >REMOVE</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">
+      FPL Id
+    </ion-label>
+    <ion-input [(ngModel)]="memberId" type="number" placeholder="Enter FPL Id"></ion-input>
+    <ion-button slot="end" color="danger" (click)="addMember(memberId)">Add</ion-button>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-button slot="fixed" color="danger" expand="block" (click)="createLeague()">Create League</ion-button>
+</ion-footer>

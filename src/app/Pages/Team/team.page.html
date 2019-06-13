@@ -1,0 +1,9 @@
+<app-header [title]="'TEAM'"></app-header>
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+<ion-content *ngIf="!showSpinner">
+  <ion-refresher slot="fixed" (ionRefresh)="refreshUser($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <app-team-page [fantasyPlayer]="mainUserService.user"></app-team-page>
+</ion-content>

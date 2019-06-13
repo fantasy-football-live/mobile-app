@@ -1,0 +1,8 @@
+<div class="pitch">
+    <app-row-of-players [players]="fantasyPlayer.team.Goalkeepers" [fantasyPlayer]='fantasyPlayer'></app-row-of-players>
+    <app-row-of-players [players]="fantasyPlayer.team.Defenders" [fantasyPlayer]='fantasyPlayer'></app-row-of-players>
+    <app-row-of-players [players]="fantasyPlayer.team.Midfielders" [fantasyPlayer]='fantasyPlayer'></app-row-of-players>
+    <app-row-of-players [players]="fantasyPlayer.team.Forwards" [fantasyPlayer]='fantasyPlayer'></app-row-of-players>
+    <app-list-divider [Title]="'Bench'"></app-list-divider>
+    <app-row-of-players [players]="fantasyPlayer.team.Bench" [fantasyPlayer]='fantasyPlayer'></app-row-of-players>
+</div>

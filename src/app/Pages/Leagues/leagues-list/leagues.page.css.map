@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACL,SAAS,EAAE,IAAI;CASlB;;AAVD,AAGI,QAHI,CAGJ,EAAE,CAAC;EACC,SAAS,EAAE,GAAG;CACjB;;AALL,AAOI,QAPI,CAOJ,CAAC,CAAC;EACE,SAAS,EAAE,GAAG;CACjB",
+    "sources": [
+        "leagues.page.scss"
+    ],
+    "names": [],
+    "file": "leagues.page.css"
+}

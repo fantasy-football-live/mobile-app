@@ -1,0 +1,34 @@
+<ion-header *ngIf="showCloseButton">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+        Close
+      </ion-button>
+    </ion-buttons>
+    <ion-title>TEAM</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+<ion-content *ngIf="!showSpinner">
+  <app-pitch-team-info [player]="fantasyPlayer"></app-pitch-team-info>
+
+  <ion-grid *ngIf="fantasyPlayer">
+    <app-pitch [fantasyPlayer]="fantasyPlayer"></app-pitch>
+
+    <app-list-divider *ngIf="gameweekTransfers.length > 0" [Title]="'Transfers'"></app-list-divider>
+
+    <ion-row *ngFor="let transfer of gameweekTransfers">
+      <ion-col size='4'>
+        <app-player-photo [player]="transfer.transferIn"></app-player-photo>
+      </ion-col>
+      <ion-col size='4' class="gameweek-transfers__icon">
+        <ion-icon name="swap"></ion-icon>
+      </ion-col>
+      <ion-col size='4'>
+        <app-player-photo [player]="transfer.transferOut"></app-player-photo>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

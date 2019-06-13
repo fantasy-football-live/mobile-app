@@ -1,0 +1,43 @@
+.fixture-difficulty {
+  margin: 0.4rem;
+  margin-left: 0;
+  border-radius: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+  font-weight: 600;
+  padding: 0.5em;
+  max-width: 10px;
+}
+
+.fixture-difficulty-2 {
+  background: #00ff86;
+}
+
+.fixture-difficulty-3 {
+  background: #ebebe4;
+}
+
+.fixture-difficulty-4 {
+  background: #ff005a;
+  color: #ffffff;
+}
+
+.fixture-difficulty-5 {
+  color: #ffffff;
+  background: #861d46;
+}
+
+.fixture-elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=stats.page.css.map */

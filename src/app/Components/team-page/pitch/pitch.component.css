@@ -1,0 +1,101 @@
+.gameweek-transfers__icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.player-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(204, 204, 204, 0);
+  margin: 0;
+  margin-bottom: 0.6em;
+}
+
+.player-photo--no-border {
+  border: none;
+}
+
+.player-photo--box-shadow {
+  -webkit-box-shadow: 7px 8px 9px 0px rgba(204, 204, 204, 0.71);
+          box-shadow: 7px 8px 9px 0px rgba(204, 204, 204, 0.71);
+  background: rgba(214, 214, 214, 0.509804);
+}
+
+.player-photo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.player-photo__captain::after {
+  content: "C";
+  width: 20px;
+  position: absolute;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 37px;
+  margin-left: -10px;
+  /* left: -1px; */
+  border-radius: 50%;
+  background: #FBFF12;
+  font-weight: 600;
+  font-size: 0.8em;
+  color: black;
+}
+
+.player-text {
+  margin-top: 0.2em;
+  color: black;
+}
+
+.player-text p {
+  margin: 0;
+  text-align: center;
+  font-size: 0.75em;
+  font-weight: 800;
+}
+
+.player-text h6 {
+  margin: 0;
+  font-weight: 600;
+  font-size: .6em;
+}
+
+.fantasy-player__heading {
+  font-size: 0.7em;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.main-logo {
+  height: 50px;
+}
+/*# sourceMappingURL=pitch.component.css.map */

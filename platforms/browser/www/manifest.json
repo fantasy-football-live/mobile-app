@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Fantasy Football Live",
+  "short_name": "Fantasy Football Live",
+  "version": "com.fantasy.live",
+  "description": "An app to view live mini league tables, live player stats and much more.",
+  "author": "David Higgins",
+  "icons": [],
+  "start_url": "index.html"
+}

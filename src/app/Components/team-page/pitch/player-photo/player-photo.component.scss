@@ -1,0 +1,91 @@
+$shadow: 0.1em 0.1em 0.5em 0.1em rgba(0, 0, 0, 0.2);
+
+.fixture {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin: 0.1em;
+    box-shadow: 0.2em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+
+    &.difficulty-2 {
+        background-color: #00ff86;
+    }
+
+    &.difficulty-3 {
+        background-color: #ebebe4;
+    }
+
+    &.difficulty-4 {
+        background: #ff005a;
+    }
+
+    &.difficulty-5 {
+        background-color: #861d46;
+    }
+
+    &-list {
+        list-style: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.player-photo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0;
+    padding: .3em;
+    margin-bottom: 0.3em;
+    box-shadow: $shadow;
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__captain::after {
+        content: "C";
+        width: 20px;
+        position: absolute;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 37px;
+        margin-left: -10px;
+        /* left: -1px; */
+        border-radius: 50%;
+        background: #FBFF12;
+        font-weight: 600;
+        font-size: 0.8em;
+        color: black;
+    }
+}
+
+
+
+.player-text {
+    margin-top: 0.2em;
+    color: black;
+    text-align: center;
+
+    p {
+        margin: 0;
+        text-align: center;
+        font-size: 0.75em;
+        font-weight: 800;
+    }
+
+    h6 {
+        margin: 0;
+        font-weight: 600;
+        font-size: .6em;
+    }
+}

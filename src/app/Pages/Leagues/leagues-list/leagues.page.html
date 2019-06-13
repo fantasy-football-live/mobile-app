@@ -1,0 +1,40 @@
+<app-header [title]="'LEAGUES'"></app-header>
+
+<ion-content padding>
+  <ion-list *ngIf="mainUserService.user" lines="inset">
+    <ion-list-header>
+      <ion-label>FPL Leagues</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let league of mainUserService.user.leagues" lines="inset" inset (click)="openLeague(league.id)"
+      detail>
+      <ion-label class="leagues" text-wrap>
+        <h2>
+          <strong> {{ league.name }}</strong>
+        </h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Custom Leagues -->
+  <ion-list *ngIf="customLeagueService.customLeagues.length > 0">
+    <ion-list-header>
+      <ion-label>
+        Custom Leagues
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let league of customLeagueService.customLeagues" lines="inset" inset
+      (click)="openLeague(league.id, true)" detail>
+      <ion-label class="leagues" text-wrap>
+        <h2>
+          <strong> {{ league.name }}</strong>
+        </h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="openAddCustomLeagueModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

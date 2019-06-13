@@ -1,0 +1,26 @@
+<app-header [title]="'Fixture Difficulty'"></app-header>
+<ion-content padding>
+    <ion-item lines="none">
+        <ion-label>Weeks</ion-label>
+        <ion-range [(ngModel)]="fixtureRange" step="1" snaps="true" (ionChange)="updateRank()" value="6" pin="true" min="1"
+            max="10" color="danger">
+            <ion-label slot="end">10</ion-label>
+            <ion-label slot="start">1</ion-label>
+        </ion-range>
+    </ion-item>
+    <ion-list>
+        <ion-item lines="none" *ngFor="let team of teams;let i = index;" text-wrap>
+            <ion-note slot="start">{{ i + 1 }}</ion-note>
+            <ion-label>
+                <h3>{{ team }}</h3>
+                <div class="fixture-elements">
+                    <span class="fixture-difficulty" *ngFor=" let fixture of teamFixtures.get(team)?.slice(0, fixtureRange)"
+                        [class]="'fixture-difficulty fixture-difficulty-' + fixture.difficulty"></span>
+                </div>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+    </ion-list>
+</ion-content>

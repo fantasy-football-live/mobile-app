@@ -1,0 +1,20 @@
+<ion-item lines="none">
+  <ion-label text-wrap>
+      <h2 class="fantasy-player__heading" text-uppercase><strong>{{ player.team.name }}</strong> </h2>
+      <p class="fantasy-player__heading">GW Points - <strong>{{ player.team.gameweekPoints }} </strong>
+      </p>
+      <p class="fantasy-player__heading">Overall Points - <strong>{{ player.team.overallPoints }} </strong>
+        <p class="fantasy-player__heading">GW Transfers - <strong>{{ player.gameweekTransfers }} </strong>
+        </p>
+
+        <p class="fantasy-player__heading">Value - <strong>{{ player.value / 10 }} </strong>
+        </p>
+        <p class="fantasy-player__heading">Bank - <strong>{{ player.bank / 10 }} </strong>
+        </p>
+        <ion-badge size="small" color="danger">{{ player.activeChip }}</ion-badge>
+    </ion-label>
+    <ion-button shape="round" size="small" color="danger" href="https://fantasy.premierleague.com/a/team/{{player.team.id}}"
+      slot="end">
+      <ion-label>VIEW TEAM ON FPL</ion-label>
+    </ion-button>
+</ion-item>

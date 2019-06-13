@@ -1,0 +1,152 @@
+.input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.home__square {
+  -webkit-box-shadow: 3px 4px 8px #ccc;
+          box-shadow: 3px 4px 8px #ccc;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home__services {
+  margin-top: 20px;
+}
+
+.home__card {
+  height: 30vh;
+  width: 100%;
+  -webkit-box-shadow: 7px 5px 8px #ccc;
+          box-shadow: 7px 5px 8px #ccc;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(240, 172, 46, 0.88)), to(rgba(203, 18, 58, 0.88))), url("../../../assets/stadium.jpg");
+  background: linear-gradient(rgba(240, 172, 46, 0.88), rgba(203, 18, 58, 0.88)), url("../../../assets/stadium.jpg");
+  background-size: cover;
+  background-origin: padding-box;
+  display: -ms-grid;
+  display: grid;
+  padding: 15px;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+      grid-template-areas: ". . ." "badge . ." "name . points";
+}
+
+.home__card__name {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: name;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.home__card__name p {
+  margin: 0;
+  font-size: 0.7em;
+  margin-top: 0.4em;
+}
+
+.home__card__name h6 {
+  margin: 0;
+  font-size: 1em;
+}
+
+.home__card__badge {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: badge;
+}
+
+.home__card__badge img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  -webkit-box-shadow: 4px 4px 9px 0px;
+          box-shadow: 4px 4px 9px 0px;
+}
+
+.home__card__points {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: points;
+}
+
+.home__card__points p {
+  margin: 0;
+  font-size: 0.7em;
+  margin-top: 0.4em;
+}
+
+.home__card__points h6 {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.home__divider {
+  padding-right: 16px;
+}
+
+.home__fixture h6 {
+  font-weight: bold;
+  font-size: 0.6em;
+}
+
+.home__fixture p {
+  font-size: 0.7em;
+}
+/*# sourceMappingURL=home.page.css.map */

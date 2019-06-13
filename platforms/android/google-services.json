@@ -1,0 +1,42 @@
+{
+    "project_info": {
+        "project_number": "276208393080",
+        "firebase_url": "https://fantasy-football-live.firebaseio.com",
+        "project_id": "fantasy-football-live",
+        "storage_bucket": "fantasy-football-live.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:276208393080:android:9c4faa6d637e93c3",
+                "android_client_info": {
+                    "package_name": "com.fantasy.live"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "276208393080-aeqqvgm4bpjb2h9jk4na59q3taeb32cp.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyApkY24e5wgHN7ZbzB39vpI5xlloqvI_Bk"
+                }
+            ],
+            "services": {
+                "analytics_service": {
+                    "status": 1
+                },
+                "appinvite_service": {
+                    "status": 1,
+                    "other_platform_oauth_client": []
+                },
+                "ads_service": {
+                    "status": 2
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}

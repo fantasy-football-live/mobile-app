@@ -1,0 +1,21 @@
+.circular path{
+    fill: none;
+  }
+  
+  .circular {
+    width: 30em;
+    height: 20em;
+    margin: 3em auto 0;
+  }
+  
+  .circular svg {
+    overflow: visible;
+    display: block;
+  }
+
+  .updating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }

@@ -1,0 +1,19 @@
+<app-header [title]="'NEWS'"></app-header>
+<ion-backdrop *ngIf="showSpinner" tappable="false"></ion-backdrop>
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item data-aos="fade-up" lines="inset" button *ngFor="let post of latestPosts" (click)="openNewsStory(post.url)">
+      <ion-avatar slot="start">
+        <img [src]="post.image" alt="post.title">
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h2>{{ post.title }}</h2>
+        <p> {{ post.url }} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

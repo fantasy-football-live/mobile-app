@@ -1,0 +1,21 @@
+[debug] [2019-02-05T18:24:36.683Z] ----------------------------------------------------------------------
+[debug] [2019-02-05T18:24:36.686Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2019-02-05T18:24:36.686Z] CLI Version:   6.3.1
+[debug] [2019-02-05T18:24:36.686Z] Platform:      darwin
+[debug] [2019-02-05T18:24:36.686Z] Node Version:  v10.14.2
+[debug] [2019-02-05T18:24:36.687Z] Time:          Tue Feb 05 2019 18:24:36 GMT+0000 (Greenwich Mean Time)
+[debug] [2019-02-05T18:24:36.687Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-05T18:24:36.698Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-05T18:24:36.698Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/apple/Documents/Projects/FantasyApp/myApp
+

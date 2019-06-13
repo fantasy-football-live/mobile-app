@@ -1,0 +1,12 @@
+<div class="player-photo-container">
+  <figure class="player-photo player-photo--box-shadow" [ngClass]="{'player-photo__captain': isCaptain }">
+    <img src='{{player.image}}' />
+  </figure>
+  <div class="player-text">
+    <ul class="fixture-list">
+      <li *ngFor="let fixture of player?.fixtures?.slice(0,5)" class="fixture difficulty-{{fixture.difficulty}}"></li>
+    </ul>
+    <h6>{{ player.name }}</h6>
+    <p>{{ player.gameweekPoints }}</p>
+  </div>
+</div>

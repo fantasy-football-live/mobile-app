@@ -1,0 +1,5 @@
+<ion-row justify-content-center>
+  <ion-col *ngFor="let player of players" align-self-center>
+      <app-player-photo [player]="player" [isCaptain]="fantasyPlayer.team.captainId === player.id"></app-player-photo>
+  </ion-col>
+</ion-row>

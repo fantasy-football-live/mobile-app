@@ -1,0 +1,74 @@
+<!-- <app-header [title]="'LEAGUE'"></app-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-label class="header">LEAGUE</ion-label>
+    <ion-buttons slot="secondary">
+      <ion-button href="/tabs/settings">
+        <ion-icon slot="icon-only" src="../../assets/icons/tools.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+
+<ion-content class="background-content" *ngIf="!showSpinner">
+  <ion-refresher slot="fixed" (ionRefresh)="refreshPulldown($event)">
+    <ion-refresher-content refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="new-member-id__input__container">
+    <ion-input [(ngModel)]="newMemberId" type="number" placeholder="Enter new Id..."></ion-input>
+    <ion-button color="danger" (click)="addMember(newMemberId, league.id)">Add</ion-button>
+  </div>
+
+  <div class="league__table">
+    <ion-item lines="none" *ngIf="isCustom" class="custom-league__controls">
+      <ion-button slot="start" color="danger" (click)="openAddMemberModal()">
+        Add Member
+      </ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteLeague()">
+        Delete
+      </ion-button>
+    </ion-item>
+    <ion-list-header>
+      {{ league.name }}
+    </ion-list-header>
+
+    <ion-grid class="league__table__content" align-items-center justify-content-center>
+      <ion-row (click)="onPlayerSelected(member.team.id)" class="league__table__content__member"
+        *ngFor="let member of leagueStanding; let i = index; " align-items-center justify-content-center>
+        <ion-col size="1">
+          {{ i + 1}}
+        </ion-col>
+        <ion-col class="league__table__content__member__name" size="5" text-wrap>
+          <h4>{{ member.team.name }}</h4>
+          <h6>{{ member.name }}</h6>
+          <ion-badge *ngIf="member.activeChip.length > 0" color="danger">{{ member.activeChip }}</ion-badge>
+        </ion-col>
+        <ion-col class="league__table__content__member__name">
+          <h4>
+            {{ member.team.overallPoints }}
+          </h4>
+          <h6>
+            {{ member.team.gameweekPoints }}
+          </h6>
+        </ion-col>
+        <ion-col class="league__table__content__member__name">
+          <h4>{{member.gameweekTransfers}} <ion-text *ngIf="member.gameweekTransfersCost > 0" color="danger"
+              style="font-size: 0.7em;">(-{{ member.gameweekTransfersCost }})</ion-text>
+          </h4>
+          <h6>Transfers</h6>
+        </ion-col>
+        <ion-col class="league__table__content__member__captain">
+          <img [src]="member.team.captainImage" [alt]="member.team.captainName">
+          <ion-text text-wrap>{{ member.team.captainName }} (C)</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

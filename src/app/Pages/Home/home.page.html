@@ -1,0 +1,101 @@
+<app-header [title]="'HOME'"></app-header>
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+<ion-content padding *ngIf="!showSpinner">
+  <div *ngIf="!user" class="input-container">
+    <ion-item>
+      <ion-label position="stacked">
+        Enter your FPL Id to begin...
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="FplId">
+      </ion-input>
+    </ion-item>
+    <ion-button (click)="onFantasyIdEntered(FplId)" shape="round" expand="block" color="danger">Enter</ion-button>
+    <p class="privacy__link">Check out our privacy policy <a target="_blank"
+        href="https://www.privacypolicies.com/privacy/view/5aab9410c306ad31ac1853eeeebe6b6a">here</a></p>
+  </div>
+
+  <div *ngIf="user">
+    <div class="home__card">
+      <div class="home__card__badge">
+        <img [src]="user.countryImage" alt="">
+      </div>
+      <div class="home__card__name">
+        <h6> {{ user.name }} </h6>
+        <p> {{ user.team.name }}</p>
+      </div>
+
+      <div class="home__card__points">
+        <h6>{{ user.team.overallPoints }}</h6>
+        <p>Total Points</p>
+      </div>
+    </div>
+
+    <ion-item-divider class="home__divider">
+      <ion-label>
+        <ion-text color="danger">
+          Transfers:</ion-text>
+        {{ user.gameweekTransfers }}
+      </ion-label>
+      <ion-label class="home__divider__rank" slot="end">
+        <ion-text color="danger">
+          Rank:</ion-text>
+        {{ user.overallRank }}
+      </ion-label>
+    </ion-item-divider>
+    <ion-grid class="home__services">
+      <ion-row justify-content-between>
+        <ion-col size="3" class="home__square" (click)="navigateTo('/team')">
+          <ion-icon src="../../assets/icons/soccer-jersey.svg" size="large" color="danger"></ion-icon>
+          <ion-label text-wrap>
+            Team
+          </ion-label>
+        </ion-col>
+        <ion-col data-aos="fade-up" data-aos-delay="2000" data-aos-duration="2000" size="3" class="home__square"
+          (click)="navigateTo('/leagues')">
+          <ion-icon src=" ../../assets/icons/trophy.svg" size="large" color="danger">
+          </ion-icon>
+          <ion-label text-wrap>
+            Leagues
+          </ion-label>
+        </ion-col>
+        <ion-col size="3" class="home__square" data-aos="fade-right" (click)="navigateTo('/news')">
+          <ion-icon name="paper" size="large" color="danger"></ion-icon>
+          <ion-label text-wrap>
+            News
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-between>
+        <ion-col size="3" class="home__square" (click)="navigateTo('/team')">
+          <ion-icon name='football' size="large" color="danger"></ion-icon>
+          <ion-label text-wrap>
+            Fixtures
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <ion-list>
+      <ion-list-header>
+        <h6>Fixtures</h6>
+      </ion-list-header>
+      <ion-item *ngFor="let fixture of upcomingFixtures;" lines="none">
+        <ion-avatar slot="start">
+          <img src="" alt="">
+        </ion-avatar>
+        <ion-label class="home__fixture" text-center>
+          <h6>
+            {{ fixture.home_team }} vs {{ fixture.away_team }}
+          </h6>
+          <p>
+            {{ fixture.time }}
+          </p>
+        </ion-label>
+        <ion-avatar slot="end">
+          <img src="" alt="">
+        </ion-avatar>
+      </ion-item>
+    </ion-list> -->
+  </div>
+
+
+</ion-content>
