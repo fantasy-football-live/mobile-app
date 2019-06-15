@@ -76,7 +76,7 @@
   "cordova-plugin-firebase": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-firebase@2.0.5"
+      "id": "https://github.com/dpa99c/cordova-plugin-firebase#GH-1057-April-05-android-build-issue"
     },
     "is_top_level": true,
     "variables": {}

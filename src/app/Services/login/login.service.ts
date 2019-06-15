@@ -1,5 +1,4 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { switchMap } from 'rxjs/operators';
 import { HTTP } from '@ionic-native/http/ngx';
 
@@ -7,7 +6,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 	providedIn: 'root'
 })
 export class LoginService implements OnInit {
-	constructor(private http: Http, private nativeHttp: HTTP) {}
+	constructor(private nativeHttp: HTTP) {}
 
 	ngOnInit() {}
 
@@ -97,23 +96,5 @@ export class LoginService implements OnInit {
 				{ element: 93, position: 15, is_captain: false, is_vice_captain: false }
 			]
 		};
-		const loginData = {
-			login: 'davidhiggins1712@gmail.com',
-			password: 'matchy123*',
-			app: 'plfpl-web',
-			redirect_uri: 'https://fantasy.premierleague.com/a/login'
-		};
-		this.http
-			.get('http://192.168.0.178:5000/login')
-			.pipe(
-				switchMap((token) => {
-
-					return this.http.post('http://192.168.0.178:5000/substitutions', {
-						picks: p,
-						token: token.text()
-					});
-				})
-			)
-			.subscribe();
 	}
 }

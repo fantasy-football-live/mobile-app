@@ -1,100 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/apple/Documents/Projects/FantasyApp/FantasyFootballLive/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/FantasyFootballLive/platforms/android/app/build/generated/res/google-services/debug/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "109,111,112,113,114,115,116,118",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "7621,7847,7963,8045,8149,8252,8372,8536",
-                        "endColumns": "143,115,81,103,102,119,104,81",
-                        "endOffsets": "7760,7958,8040,8144,8247,8367,8472,8613"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-16.0.8.aar/0f9decedb0464936f0a19deb2975f724/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "120,121,122",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "8689,8759,8843",
-                        "endColumns": "69,83,67",
-                        "endOffsets": "8754,8838,8906"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/7a551da754fd0953dd31a70206635bd0/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "13,16,18,83,128,130,131,136,138",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "996,1178,1307,4652,9229,9405,9527,9789,9984",
-                        "endColumns": "88,70,72,59,65,121,60,65,66",
-                        "endOffsets": "1080,1244,1375,4707,9290,9522,9583,9850,10046"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/FantasyFootballLive/platforms/android/app/src/main/res/values/cordova-plugin-firebase-strings.xml",
-                    "from": {
-                        "startLines": "-1,-1",
-                        "startColumns": "-1,-1",
-                        "startOffsets": "-1,-1"
-                    },
-                    "to": {
-                        "startLines": "107,108",
-                        "startColumns": "4,4",
-                        "startOffsets": "7471,7551",
-                        "endColumns": "79,69",
-                        "endOffsets": "7546,7616"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.6.0.aar/eb6d824da8174ed610b181c40359ba11/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "110",
-                        "startColumns": "4",
-                        "startOffsets": "7765",
-                        "endColumns": "81",
-                        "endOffsets": "7842"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.2.0.aar/2cb004f251d933b35855d550b81f2037/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1",
-                        "startColumns": "-1,-1",
-                        "startOffsets": "-1,-1"
-                    },
-                    "to": {
-                        "startLines": "84,97",
-                        "startColumns": "4,4",
-                        "startOffsets": "4712,6178",
-                        "endColumns": "67,166",
-                        "endOffsets": "4775,6340"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/FantasyFootballLive/platforms/android/app/build/generated/fabric/res/debug/values/com_crashlytics_build_id.xml",
+                    "source": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/build/generated/fabric/res/debug/values/com_crashlytics_build_id.xml",
                     "from": {
                         "startLines": "8",
                         "startColumns": "0",
@@ -111,180 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/FantasyFootballLive/platforms/android/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "2,14,15",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "150,1085,1129",
-                        "endColumns": "42,43,48",
-                        "endOffsets": "188,1124,1173"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/b7e1b686b78f43b7358e260852f15a4e/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "3,4,5,6,7,8,9,10,89,90,91,92,93,94,95,96,98,99,100,101,102,103,104,105,106",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "193,283,363,453,543,623,704,784,5138,5243,5424,5549,5656,5836,5959,6075,6345,6533,6638,6819,6944,7119,7267,7330,7392",
-                        "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78",
-                        "endOffsets": "278,358,448,538,618,699,779,859,5238,5419,5544,5651,5831,5954,6070,6173,6528,6633,6814,6939,7114,7262,7325,7387,7466"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/225145e23640d25d3fc0f39a288fd137/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "11,12,17,19,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,85,119,123,124,129,132,137,139,140",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "864,933,1249,1380,3011,3081,3149,3221,3291,3352,3413,3474,3536,3600,3662,3723,3791,3891,3951,4017,4090,4159,4216,4268,4330,4402,4478,4513,4548,4582,4617,4780,8618,8911,9028,9295,9588,9855,10051,10123",
-                        "endLines": "11,12,17,19,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,85,119,123,127,129,135,137,139,140",
-                        "endColumns": "68,62,57,73,69,67,71,69,60,60,60,61,63,61,60,67,99,59,65,72,68,56,51,61,71,75,34,34,33,34,34,69,70,116,12,109,12,128,71,66",
-                        "endOffsets": "928,991,1302,1449,3076,3144,3216,3286,3347,3408,3469,3531,3595,3657,3718,3786,3886,3946,4012,4085,4154,4211,4263,4325,4397,4473,4508,4543,4577,4612,4647,4845,8684,9023,9224,9400,9784,9979,10118,10185"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/FantasyFootballLive/platforms/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "86,87,117",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "4850,4914,8477",
-                        "endColumns": "63,58,58",
-                        "endOffsets": "4909,4968,8531"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/apple/Documents/Projects/FantasyApp/myApp/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/7a551da754fd0953dd31a70206635bd0/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "13,16,18,83,128,130,131,136,138",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "996,1178,1307,4652,9229,9405,9527,9789,9984",
-                        "endColumns": "88,70,72,59,65,121,60,65,66",
-                        "endOffsets": "1080,1244,1375,4707,9290,9522,9583,9850,10046"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/myApp/platforms/android/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "2,14,15",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "150,1085,1129",
-                        "endColumns": "42,43,48",
-                        "endOffsets": "188,1124,1173"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/myApp/platforms/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "86,87,117",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "4850,4914,8477",
-                        "endColumns": "63,58,58",
-                        "endOffsets": "4909,4968,8531"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.1.0.aar/5df6ffd5950950a897d1d58696a0138b/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1",
-                        "startColumns": "-1,-1",
-                        "startOffsets": "-1,-1"
-                    },
-                    "to": {
-                        "startLines": "84,97",
-                        "startColumns": "4,4",
-                        "startOffsets": "4712,6178",
-                        "endColumns": "67,166",
-                        "endOffsets": "4775,6340"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.4.aar/3d7b5cc89edcf23007fe93e7cf9661f0/res/values/values.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "110",
-                        "startColumns": "4",
-                        "startOffsets": "7765",
-                        "endColumns": "81",
-                        "endOffsets": "7842"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/myApp/platforms/android/app/build/generated/res/google-services/debug/values/values.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "109,111,112,113,114,115,116,118",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "7621,7847,7963,8045,8149,8252,8372,8536",
-                        "endColumns": "143,115,81,103,102,119,104,81",
-                        "endOffsets": "7760,7958,8040,8144,8247,8367,8472,8613"
-                    }
-                },
-                {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/myApp/platforms/android/app/build/generated/fabric/res/debug/values/com_crashlytics_build_id.xml",
-                    "from": {
-                        "startLines": "8",
-                        "startColumns": "0",
-                        "startOffsets": "303",
-                        "endColumns": "162",
-                        "endOffsets": "465"
-                    },
-                    "to": {
-                        "startLines": "88",
-                        "startColumns": "4",
-                        "startOffsets": "4973",
-                        "endColumns": "164",
-                        "endOffsets": "5133"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-16.0.7.aar/2644be0fc6daec36ece6c73b8cc0eb62/res/values/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-16.0.8.aar/60d6d47209d4c0d76adb3d85e7c8839b/res/values/values.xml",
                     "from": {
                         "startLines": "-1,-1,-1",
                         "startColumns": "-1,-1,-1",
@@ -299,7 +36,22 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/b7e1b686b78f43b7358e260852f15a4e/res/values/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/1c711d0ec1c10e89035dcfe413b1c9df/res/values/values.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "13,16,18,83,128,130,131,136,138",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "996,1178,1307,4652,9229,9405,9527,9789,9984",
+                        "endColumns": "88,70,72,59,65,121,60,65,66",
+                        "endOffsets": "1080,1244,1375,4707,9290,9522,9583,9850,10046"
+                    }
+                },
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/397ab6469a06155fb5ddfca4ab778c4c/res/values/values.xml",
                     "from": {
                         "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
                         "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
@@ -314,7 +66,7 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/225145e23640d25d3fc0f39a288fd137/res/values/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/34fcfa0919d5968b75e4788e05df5b5b/res/values/values.xml",
                     "from": {
                         "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
                         "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
@@ -330,7 +82,67 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/Documents/Projects/FantasyApp/myApp/platforms/android/app/src/main/res/values/cordova-plugin-firebase-strings.xml",
+                    "source": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/build/generated/res/google-services/debug/values/values.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "109,111,112,113,114,115,116,118",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "7621,7847,7963,8045,8149,8252,8372,8536",
+                        "endColumns": "143,115,81,103,102,119,104,81",
+                        "endOffsets": "7760,7958,8040,8144,8247,8367,8472,8613"
+                    }
+                },
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/c6f909d89080f1addcc4c5f3f720f717/res/values/values.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "110",
+                        "startColumns": "4",
+                        "startOffsets": "7765",
+                        "endColumns": "81",
+                        "endOffsets": "7842"
+                    }
+                },
+                {
+                    "source": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1",
+                        "startColumns": "-1,-1,-1",
+                        "startOffsets": "-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,14,15",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "150,1085,1129",
+                        "endColumns": "42,43,48",
+                        "endOffsets": "188,1124,1173"
+                    }
+                },
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.2.0.aar/a59bed95dab6cd5844e3f0ee5ecaa014/res/values/values.xml",
+                    "from": {
+                        "startLines": "-1,-1",
+                        "startColumns": "-1,-1",
+                        "startOffsets": "-1,-1"
+                    },
+                    "to": {
+                        "startLines": "84,97",
+                        "startColumns": "4,4",
+                        "startOffsets": "4712,6178",
+                        "endColumns": "67,166",
+                        "endOffsets": "4775,6340"
+                    }
+                },
+                {
+                    "source": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/src/main/res/values/cordova-plugin-firebase-strings.xml",
                     "from": {
                         "startLines": "-1,-1",
                         "startColumns": "-1,-1",
@@ -342,6 +154,21 @@
                         "startOffsets": "7471,7551",
                         "endColumns": "79,69",
                         "endOffsets": "7546,7616"
+                    }
+                },
+                {
+                    "source": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1",
+                        "startColumns": "-1,-1,-1",
+                        "startOffsets": "-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "86,87,117",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "4850,4914,8477",
+                        "endColumns": "63,58,58",
+                        "endOffsets": "4909,4968,8531"
                     }
                 }
             ]

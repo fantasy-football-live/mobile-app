@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // HTTP
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Device } from '@ionic-native/device/ngx';
@@ -19,16 +18,18 @@ import { Device } from '@ionic-native/device/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
 // Firebase
-import {
-	AngularFireModule,
-	FirebaseOptionsToken,
-} from 'angularfire2';
+import { AngularFireModule, FirebaseOptionsToken } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import config from 'src/firebase.config';
 
-// cookie
-import { CookieService } from 'ngx-cookie-service';
+// socket io
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const socketConfig: SocketIoConfig = {
+	// url: 'localhost:3000',
+	url: 'https://fantasy-chat-app.herokuapp.com/',
+	options: {}
+};
 
 @NgModule({
 	declarations: [ AppComponent ],
@@ -38,7 +39,7 @@ import { CookieService } from 'ngx-cookie-service';
 		IonicModule.forRoot(),
 		AppRoutingModule,
 		HttpClientModule,
-		HttpModule,
+		SocketIoModule.forRoot(socketConfig),
 		IonicStorageModule.forRoot(),
 		AngularFireModule,
 		AngularFirestoreModule
@@ -49,7 +50,6 @@ import { CookieService } from 'ngx-cookie-service';
 		StatusBar,
 		SplashScreen,
 		Firebase,
-		CookieService,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 		{ provide: FirebaseOptionsToken, useValue: config }
 	],

@@ -33,9 +33,13 @@ export class StaticDataService {
 				);
 			}
 			this.staticData = data;
-			const nextDeadline = data.next_event_fixtures[0]
-				? data.next_event_fixtures[0].deadline_time
-				: null;
+			let nextDeadline = null;
+
+			if (data.next_event_fixtures.length) {
+				nextDeadline = data.next_event_fixtures[0]
+					? data.next_event_fixtures[0].deadline_time
+					: null;
+			}
 
 			this.storage.set(this.updateDataTime, nextDeadline);
 			this.storage.set(this.storageKey, this.staticData);

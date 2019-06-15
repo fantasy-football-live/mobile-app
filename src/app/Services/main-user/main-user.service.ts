@@ -39,6 +39,10 @@ export class MainUserService {
 		this.storage.set(this.userKey, this.user);
 	}
 
+	get Name() {
+		return this.user.name;
+	}
+
 	/**
 	 * @description creates the main user of the app
 	 * @param id fpl id of user
@@ -63,7 +67,6 @@ export class MainUserService {
 	}
 
 	async updateUser(id: number) {
-
 		// keep custom league and clear rest of the data
 		const customLeagues = await this.customLeagueService.getLeagues();
 		this.storage.clear();

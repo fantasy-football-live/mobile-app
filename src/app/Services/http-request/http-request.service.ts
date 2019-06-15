@@ -21,11 +21,7 @@ export class HttpRequestService {
 	 * @param url string
 	 */
 	public async fetch(url: string, params: {} = {}, header: {} = {}) {
-		return await this.fetchData(
-			url,
-			params,
-			header
-		).catch(err => console.log(err));
+		return this.parseJsonData(await this.fetchData(url, params, header));
 	}
 
 	/**
@@ -43,7 +39,7 @@ export class HttpRequestService {
 			return JSON.parse(res.data);
 		}
 
-		return res.json();
+		return res;
 	}
 
 	/**

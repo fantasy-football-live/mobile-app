@@ -1,33 +1,19 @@
-import {
-	Component,
-	OnInit
-} from '@angular/core';
-import {
-	NavParams
-} from '@ionic/angular';
-import {
-	ModalController
-} from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavParams } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 import FantasyPlayer from '../../../Models/FantasyPlayer';
 import League from '../../../Models/League';
-import {
-	LeaguesService
-} from 'src/app/Services/leagues/leagues.service';
-import {
-	TeamPageComponent
-} from 'src/app/Components/team-page/team-page.component';
-import {
-	MainUserService
-} from 'src/app/Services/main-user/main-user.service';
-import {
-	CustomLeagueService
-} from 'src/app/Services/leagues/custom-league.service';
+import { LeaguesService } from 'src/app/Services/leagues/leagues.service';
+import { TeamPageComponent } from 'src/app/Components/team-page/team-page.component';
+import { MainUserService } from 'src/app/Services/main-user/main-user.service';
+import { CustomLeagueService } from 'src/app/Services/leagues/custom-league.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
 	selector: 'app-league',
 	templateUrl: './league.component.html',
-	styleUrls: ['./league.component.scss']
+	styleUrls: [ './league.component.scss' ]
 })
 export class LeagueComponent implements OnInit {
 	league: League = null;
@@ -37,20 +23,40 @@ export class LeagueComponent implements OnInit {
 	leagueStanding = [];
 	isCustom = false;
 	newMemberId = null;
+	displaySegment = 'STANDINGS';
+	@ViewChild('slider') slider;
+	page = '0';
+	messages = [];
+	draftMessage = '';
 
 	constructor(
 		public modalController: ModalController,
 		private navParams: NavParams,
 		private leaguesService: LeaguesService,
 		private mainUserService: MainUserService,
-		private customLeagueService: CustomLeagueService
+		private customLeagueService: CustomLeagueService,
+		private socket: Socket
 	) {}
 
 	ngOnInit() {
 		this.retrieveLeagueData();
+		this.socket.connect();
+
+		this.socket.on('new-message', (message) => {
+			this.messages.push(message);
+		});
 	}
 
-	async retrieveLeagueData(): Promise < any > {
+	selectedTab(index) {
+		this.slider.slideTo(index);
+	}
+
+	async moveButton() {
+		const index = await this.slider.getActiveIndex();
+		this.page = index.toString();
+	}
+
+	async retrieveLeagueData(): Promise<any> {
 		this.isCustom = this.navParams.data.isCustom;
 		const id = this.navParams.data.leagueId;
 		if (!this.isCustom) {
@@ -62,6 +68,18 @@ export class LeagueComponent implements OnInit {
 				.fetchLeagueData(custLeague)
 				.then((league_2) => this.onLeagueLoaded(league_2));
 		}
+	}
+
+	sendMessage() {
+		const message = this.draftMessage;
+		this.draftMessage = '';
+
+		this.socket.emit('send-message', {
+			text: message,
+			leagueId: this.league.id,
+			name: this.mainUserService.Name,
+			timestamp: new Date()
+		});
 	}
 
 	onLeagueLoaded(league) {
@@ -117,12 +135,16 @@ export class LeagueComponent implements OnInit {
 		}
 		await this.customLeagueService.addMemberToLeague(id, leagueId);
 		this.retrieveLeagueData().then(() => {
-			(<HTMLElement>document.querySelector('.new-member-id__input__container')).style.display = 'none';
+			(<HTMLElement>document.querySelector(
+				'.new-member-id__input__container'
+			)).style.display =
+				'none';
 			this.newMemberId = null;
 		});
 	}
 
 	openAddMemberModal() {
-		(<HTMLElement>document.querySelector('.new-member-id__input__container')).style.display = 'flex';
+		(<HTMLElement>document.querySelector('.new-member-id__input__container')).style.display =
+			'flex';
 	}
 }

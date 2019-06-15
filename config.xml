@@ -83,7 +83,7 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.2" />
     <plugin name="cordova-sqlite-storage" spec="2.6.0" />
-    <plugin name="cordova-plugin-firebase" spec="2.0.5" />
-    <engine name="android" spec="7.1.4" />
+    <plugin name="cordova-plugin-firebase" spec="https://github.com/dpa99c/cordova-plugin-firebase#GH-1057-April-05-android-build-issue" />
     <engine name="browser" spec="5.0.4" />
+    <engine name="android" spec="7.1.4" />
 </widget>

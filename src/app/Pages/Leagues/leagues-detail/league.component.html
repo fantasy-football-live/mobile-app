@@ -13,62 +13,103 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment color="danger" [(ngModel)]="page">
+      <ion-segment-button value="0" (click)="selectedTab(0)">
+        <ion-label>STANDINGS</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1" (click)="selectedTab(1)">
+        <ion-label>CHAT</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 
-<ion-content class="background-content" *ngIf="!showSpinner">
+
+<ion-content *ngIf="!showSpinner">
   <ion-refresher slot="fixed" (ionRefresh)="refreshPulldown($event)">
     <ion-refresher-content refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
   </ion-refresher>
 
-  <div class="new-member-id__input__container">
-    <ion-input [(ngModel)]="newMemberId" type="number" placeholder="Enter new Id..."></ion-input>
-    <ion-button color="danger" (click)="addMember(newMemberId, league.id)">Add</ion-button>
-  </div>
+  <ion-slides #slider (ionSlideWillChange)="moveButton()">
+    <ion-slide>
+      <div class="new-member-id__input__container">
+        <ion-input [(ngModel)]="newMemberId" type="number" placeholder="Enter new Id..."></ion-input>
+        <ion-button color="danger" (click)="addMember(newMemberId, league.id)">Add</ion-button>
+      </div>
 
-  <div class="league__table">
-    <ion-item lines="none" *ngIf="isCustom" class="custom-league__controls">
-      <ion-button slot="start" color="danger" (click)="openAddMemberModal()">
-        Add Member
-      </ion-button>
-      <ion-button slot="end" color="danger" (click)="deleteLeague()">
-        Delete
-      </ion-button>
-    </ion-item>
-    <ion-list-header>
-      {{ league.name }}
-    </ion-list-header>
+      <div class="league__table">
+        <ion-item lines="none" *ngIf="isCustom" class="custom-league__controls">
+          <ion-button slot="start" color="danger" (click)="openAddMemberModal()">
+            Add Member
+          </ion-button>
+          <ion-button slot="end" color="danger" (click)="deleteLeague()">
+            Delete
+          </ion-button>
+        </ion-item>
+        <ion-list-header>
+          {{ league.name }}
+        </ion-list-header>
 
-    <ion-grid class="league__table__content" align-items-center justify-content-center>
-      <ion-row (click)="onPlayerSelected(member.team.id)" class="league__table__content__member"
-        *ngFor="let member of leagueStanding; let i = index; " align-items-center justify-content-center>
-        <ion-col size="1">
-          {{ i + 1}}
-        </ion-col>
-        <ion-col class="league__table__content__member__name" size="5" text-wrap>
-          <h4>{{ member.team.name }}</h4>
-          <h6>{{ member.name }}</h6>
-          <ion-badge *ngIf="member.activeChip.length > 0" color="danger">{{ member.activeChip }}</ion-badge>
-        </ion-col>
-        <ion-col class="league__table__content__member__name">
-          <h4>
-            {{ member.team.overallPoints }}
-          </h4>
-          <h6>
-            {{ member.team.gameweekPoints }}
-          </h6>
-        </ion-col>
-        <ion-col class="league__table__content__member__name">
-          <h4>{{member.gameweekTransfers}} <ion-text *ngIf="member.gameweekTransfersCost > 0" color="danger"
-              style="font-size: 0.7em;">(-{{ member.gameweekTransfersCost }})</ion-text>
-          </h4>
-          <h6>Transfers</h6>
-        </ion-col>
-        <ion-col class="league__table__content__member__captain">
-          <img [src]="member.team.captainImage" [alt]="member.team.captainName">
-          <ion-text text-wrap>{{ member.team.captainName }} (C)</ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+        <ion-grid class="league__table__content" align-items-center justify-content-center>
+          <ion-row (click)="onPlayerSelected(member.team.id)" class="league__table__content__member"
+            *ngFor="let member of leagueStanding; let i = index; " align-items-center justify-content-center>
+            <ion-col size="1">
+              {{ i + 1}}
+            </ion-col>
+            <ion-col class="league__table__content__member__name" size="5" text-wrap>
+              <h4>{{ member.team.name }}</h4>
+              <h6>{{ member.name }}</h6>
+              <ion-badge *ngIf="member.activeChip.length > 0" color="danger">{{ member.activeChip }}</ion-badge>
+            </ion-col>
+            <ion-col class="league__table__content__member__name">
+              <h4>
+                {{ member.team.overallPoints }}
+              </h4>
+              <h6>
+                {{ member.team.gameweekPoints }}
+              </h6>
+            </ion-col>
+            <ion-col class="league__table__content__member__name">
+              <h4>{{member.gameweekTransfers}} <ion-text *ngIf="member.gameweekTransfersCost > 0" color="danger"
+                  style="font-size: 0.7em;">(-{{ member.gameweekTransfersCost }})</ion-text>
+              </h4>
+              <h6>Transfers</h6>
+            </ion-col>
+            <ion-col class="league__table__content__member__captain">
+              <img [src]="member.team.captainImage" [alt]="member.team.captainName">
+              <ion-text text-wrap>{{ member.team.captainName }} (C)</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <ion-list>
+        <ion-item *ngFor="let message of messages">
+          <ion-label>
+            <h2>
+                {{message.name}}
+            </h2>
+            <h3>
+                {{message.text}}
+            </h3>
+            <p>
+              {{message.timestamp}}
+            </p>
+          </ion-label>
+
+        </ion-item>
+      </ion-list>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
+<ion-footer *ngIf="page == '1'">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-textarea [(ngModel)]="draftMessage" placeholder="Enter more information here..."></ion-textarea>
+    </ion-item>
+    <ion-button expand='block' color="danger" (click)="sendMessage()">Send</ion-button>
+  </ion-toolbar>
+</ion-footer>

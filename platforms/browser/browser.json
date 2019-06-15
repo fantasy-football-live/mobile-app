@@ -50,7 +50,7 @@
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.fantasy.live"
     }
   },
   "dependent_plugins": {},
