@@ -5,7 +5,6 @@ import Team from 'src/app/Models/Team';
 import { GameweekDataService } from '../gameweek-data/gameweek-data.service';
 import { GameweekHistoryService } from '../gameweek-history/gameweek-history.service';
 import { SoccerPlayerService } from '../soccer-player/soccerplayer.service';
-import { Storage } from '@ionic/storage';
 import { BonusPointService } from '../bonus-point/bonus-point.service';
 
 @Injectable({
@@ -23,7 +22,6 @@ export class FantasyPlayerService {
 		private gameweekDataService: GameweekDataService,
 		private gameweekHistoryService: GameweekHistoryService,
 		private soccerPlayerService: SoccerPlayerService,
-		private storage: Storage,
 		private bonusPointService: BonusPointService
 	) {}
 
@@ -33,108 +31,27 @@ export class FantasyPlayerService {
    * @description creates a fantasy premier league player
    * @returns FantasyPlayer object
    */
-	async createPlayer(
-		id: number,
-		liveData: any,
-		soccerPlayers: Map<number, any>,
-		currentGameweek: number
-	): Promise<FantasyPlayer> {
-		const key = `id-${id} gameweek-${currentGameweek}`;
-		// tslint:disable-next-line: prefer-const
-		let stored = await this.storage.get(key),
-			userGameweekData = null,
-			playerData = null,
-			team = null,
-			previousGameweeksHistory = null,
-			newFantasyPlayer = null;
-
-		if (!stored) {
-			userGameweekData = await this.gameweekDataService.getGameweekData(id, currentGameweek);
-			previousGameweeksHistory = await this.gameweekHistoryService.fetch(id);
-			playerData = this.parsePlayerData(
-				userGameweekData,
-				previousGameweeksHistory,
-				currentGameweek
-			),
-			team = new Team(id, playerData.teamName, playerData.lastWeekOverallPoints),
-			newFantasyPlayer = new FantasyPlayer(
-					playerData.activeChip,
-					playerData.bank,
-					playerData.value,
-					playerData.countryImage,
-					0,
-					playerData.gameweekTransfers,
-					playerData.gameweekTransfersCost,
-					id,
-					playerData.leagues,
-					playerData.name,
-					playerData.overallRank,
-					team
-			);
-
-			this.storage.set(key, {
-				userGameweekData,
-				previousGameweeksHistory,
-				playerData,
-				team,
-				newFantasyPlayer
-			});
-
-		} else {
-			userGameweekData = stored.userGameweekData;
-			previousGameweeksHistory = stored.previousGameweeksHistory;
-			playerData = stored.playerData;
-			team = new Team(id, playerData.teamName, playerData.lastWeekOverallPoints);
-			newFantasyPlayer = stored.newFantasyPlayer;
-			newFantasyPlayer.team = team;
-		}
+	async createPlayer(id: number, currentGameweek: number): Promise<FantasyPlayer> {
+		const gameweekData = await this.gameweekDataService.getGameweekData(currentGameweek);
+		const previousGameweeksHistory = await this.gameweekHistoryService.getGameweekHistory(id);
+		const team = new Team(id, gameweekData.teamName, gameweekData.lastWeekOverallPoints);
+		const newFantasyPlayer = new FantasyPlayer(
+			previousGameweeksHistory.activeChip,
+			previousGameweeksHistory.bank,
+			previousGameweeksHistory.value,
+			gameweekData.countryImage,
+			0,
+			previousGameweeksHistory.gameweekTransfers,
+			previousGameweeksHistory.gameweekTransfersCost,
+			id,
+			gameweekData.leagues,
+			gameweekData.name,
+			gameweekData.overallRank,
+			team
+		);
 
 		this.populateSquad(playerData.picks, newFantasyPlayer, liveData, soccerPlayers);
 		return newFantasyPlayer;
-	}
-
-	/**
-	 * extracts relevant data from objects return from FPL API
-	 * @param userGameweekData {}
-	 * @param previousGameweekHistory {}
-	 * @param currentGameweek {number}
-	 */
-	private parsePlayerData(
-		userGameweekData: any,
-		previousGameweekHistory: any,
-		currentGameweek: number
-	) {
-		const leagues = previousGameweekHistory.leagues.classic,
-			activeChip = userGameweekData.active_chip,
-			name = `${previousGameweekHistory.entry.player_first_name} ${previousGameweekHistory
-				.entry.player_last_name}`,
-			countryImage = `assets/country_flags/${previousGameweekHistory.entry
-				.player_region_short_iso}.gif`,
-			teamName = previousGameweekHistory.entry.name,
-			lastWeekOverallPoints = previousGameweekHistory.history.find(
-				(gameweek) => gameweek.event === currentGameweek - 1
-			).total_points,
-			picks = userGameweekData.picks,
-			value = userGameweekData.entry_history.value,
-			bank = userGameweekData.entry_history.bank,
-			gameweekTransfers = userGameweekData.entry_history.event_transfers,
-			gameweekTransfersCost = userGameweekData.entry_history.event_transfers_cost,
-			overallRank = previousGameweekHistory.history.pop().overall_rank;
-
-		return {
-			leagues,
-			activeChip,
-			name,
-			countryImage,
-			teamName,
-			lastWeekOverallPoints,
-			picks,
-			bank,
-			value,
-			gameweekTransfers,
-			gameweekTransfersCost,
-			overallRank
-		};
 	}
 
 	private populateSquad(
@@ -143,7 +60,6 @@ export class FantasyPlayerService {
 		liveData: any,
 		players: Map<number, any>
 	) {
-		// tslint:disable-next-line: prefer-const
 		let totalPoints = 0;
 		const livePlayerData = liveData['elements'];
 		const liveFixturesData = liveData['fixtures'];

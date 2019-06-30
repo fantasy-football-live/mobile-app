@@ -9,6 +9,7 @@ import { TeamPageComponent } from 'src/app/Components/team-page/team-page.compon
 import { MainUserService } from 'src/app/Services/main-user/main-user.service';
 import { CustomLeagueService } from 'src/app/Services/leagues/custom-league.service';
 import { Socket } from 'ngx-socket-io';
+import { ChatService } from '../../../Services/Chat/chat.service';
 
 @Component({
 	selector: 'app-league',
@@ -35,14 +36,23 @@ export class LeagueComponent implements OnInit {
 		private leaguesService: LeaguesService,
 		private mainUserService: MainUserService,
 		private customLeagueService: CustomLeagueService,
-		private socket: Socket
+		private socket: Socket,
+		private chatService: ChatService
 	) {}
 
 	ngOnInit() {
 		this.retrieveLeagueData();
 		this.socket.connect();
+		this.chatService
+			.getMessages()
+			.then((res) => {
+				console.log(res);
+				this.messages = res;
+			})
+			.catch((err) => console.log(err));
 
 		this.socket.on('new-message', (message) => {
+			console.log(message);
 			this.messages.push(message);
 		});
 	}

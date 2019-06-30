@@ -154,7 +154,7 @@ var CustomLeaguesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <app-header [title]=\"'LEAGUE'\"></app-header> -->\n<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button color=\"dark\" (click)=\"closeModal()\">\n        <ion-icon name=\"arrow-back\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-label class=\"header\">LEAGUE</ion-label>\n    <ion-buttons slot=\"secondary\">\n      <ion-button href=\"/tabs/settings\">\n        <ion-icon slot=\"icon-only\" src=\"../../assets/icons/tools.svg\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <ion-toolbar>\n    <ion-segment color=\"danger\" [(ngModel)]=\"page\">\n      <ion-segment-button value=\"0\" (click)=\"selectedTab(0)\">\n        <ion-label>STANDINGS</ion-label>\n      </ion-segment-button>\n      <ion-segment-button value=\"1\" (click)=\"selectedTab(1)\">\n        <ion-label>CHAT</ion-label>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n<app-loading-spinner *ngIf=\"showSpinner\"></app-loading-spinner>\n\n\n<ion-content *ngIf=\"!showSpinner\">\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"refreshPulldown($event)\">\n    <ion-refresher-content refreshingSpinner=\"circles\" refreshingText=\"Refreshing...\"></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-slides #slider (ionSlideWillChange)=\"moveButton()\">\n    <ion-slide>\n      <div class=\"new-member-id__input__container\">\n        <ion-input [(ngModel)]=\"newMemberId\" type=\"number\" placeholder=\"Enter new Id...\"></ion-input>\n        <ion-button color=\"danger\" (click)=\"addMember(newMemberId, league.id)\">Add</ion-button>\n      </div>\n\n      <div class=\"league__table\">\n        <ion-item lines=\"none\" *ngIf=\"isCustom\" class=\"custom-league__controls\">\n          <ion-button slot=\"start\" color=\"danger\" (click)=\"openAddMemberModal()\">\n            Add Member\n          </ion-button>\n          <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteLeague()\">\n            Delete\n          </ion-button>\n        </ion-item>\n        <ion-list-header>\n          {{ league.name }}\n        </ion-list-header>\n\n        <ion-grid class=\"league__table__content\" align-items-center justify-content-center>\n          <ion-row (click)=\"onPlayerSelected(member.team.id)\" class=\"league__table__content__member\"\n            *ngFor=\"let member of leagueStanding; let i = index; \" align-items-center justify-content-center>\n            <ion-col size=\"1\">\n              {{ i + 1}}\n            </ion-col>\n            <ion-col class=\"league__table__content__member__name\" size=\"5\" text-wrap>\n              <h4>{{ member.team.name }}</h4>\n              <h6>{{ member.name }}</h6>\n              <ion-badge *ngIf=\"member.activeChip.length > 0\" color=\"danger\">{{ member.activeChip }}</ion-badge>\n            </ion-col>\n            <ion-col class=\"league__table__content__member__name\">\n              <h4>\n                {{ member.team.overallPoints }}\n              </h4>\n              <h6>\n                {{ member.team.gameweekPoints }}\n              </h6>\n            </ion-col>\n            <ion-col class=\"league__table__content__member__name\">\n              <h4>{{member.gameweekTransfers}} <ion-text *ngIf=\"member.gameweekTransfersCost > 0\" color=\"danger\"\n                  style=\"font-size: 0.7em;\">(-{{ member.gameweekTransfersCost }})</ion-text>\n              </h4>\n              <h6>Transfers</h6>\n            </ion-col>\n            <ion-col class=\"league__table__content__member__captain\">\n              <img [src]=\"member.team.captainImage\" [alt]=\"member.team.captainName\">\n              <ion-text text-wrap>{{ member.team.captainName }} (C)</ion-text>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n    </ion-slide>\n    <ion-slide>\n      <ion-list>\n        <ion-item lines=\"none\" *ngFor=\"let message of messages\">\n          {{message}}\n        </ion-item>\n      </ion-list>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n<ion-footer *ngIf=\"page == '1'\">\n  <ion-toolbar>\n    <ion-item lines=\"none\">\n      <ion-textarea [(ngModel)]=\"draftMessage\" placeholder=\"Enter more information here...\"></ion-textarea>\n    </ion-item>\n    <ion-button expand='block' color=\"danger\" (click)=\"sendMessage()\">Send</ion-button>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<!-- <app-header [title]=\"'LEAGUE'\"></app-header> -->\n<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button color=\"dark\" (click)=\"closeModal()\">\n        <ion-icon name=\"arrow-back\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-label class=\"header\">LEAGUE</ion-label>\n    <ion-buttons slot=\"secondary\">\n      <ion-button href=\"/tabs/settings\">\n        <ion-icon slot=\"icon-only\" src=\"../../assets/icons/tools.svg\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <ion-toolbar>\n    <ion-segment color=\"danger\" [(ngModel)]=\"page\">\n      <ion-segment-button value=\"0\" (click)=\"selectedTab(0)\">\n        <ion-label>STANDINGS</ion-label>\n      </ion-segment-button>\n      <ion-segment-button value=\"1\" (click)=\"selectedTab(1)\">\n        <ion-label>CHAT</ion-label>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n<app-loading-spinner *ngIf=\"showSpinner\"></app-loading-spinner>\n\n\n<ion-content *ngIf=\"!showSpinner\">\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"refreshPulldown($event)\">\n    <ion-refresher-content refreshingSpinner=\"circles\" refreshingText=\"Refreshing...\"></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-slides #slider (ionSlideWillChange)=\"moveButton()\">\n    <ion-slide>\n      <div class=\"new-member-id__input__container\">\n        <ion-input [(ngModel)]=\"newMemberId\" type=\"number\" placeholder=\"Enter new Id...\"></ion-input>\n        <ion-button color=\"danger\" (click)=\"addMember(newMemberId, league.id)\">Add</ion-button>\n      </div>\n\n      <div class=\"league__table\">\n        <ion-item lines=\"none\" *ngIf=\"isCustom\" class=\"custom-league__controls\">\n          <ion-button slot=\"start\" color=\"danger\" (click)=\"openAddMemberModal()\">\n            Add Member\n          </ion-button>\n          <ion-button slot=\"end\" color=\"danger\" (click)=\"deleteLeague()\">\n            Delete\n          </ion-button>\n        </ion-item>\n        <ion-list-header>\n          {{ league.name }}\n        </ion-list-header>\n\n        <ion-grid class=\"league__table__content\" align-items-center justify-content-center>\n          <ion-row (click)=\"onPlayerSelected(member.team.id)\" class=\"league__table__content__member\"\n            *ngFor=\"let member of leagueStanding; let i = index; \" align-items-center justify-content-center>\n            <ion-col size=\"1\">\n              {{ i + 1}}\n            </ion-col>\n            <ion-col class=\"league__table__content__member__name\" size=\"5\" text-wrap>\n              <h4>{{ member.team.name }}</h4>\n              <h6>{{ member.name }}</h6>\n              <ion-badge *ngIf=\"member.activeChip.length > 0\" color=\"danger\">{{ member.activeChip }}</ion-badge>\n            </ion-col>\n            <ion-col class=\"league__table__content__member__name\">\n              <h4>\n                {{ member.team.overallPoints }}\n              </h4>\n              <h6>\n                {{ member.team.gameweekPoints }}\n              </h6>\n            </ion-col>\n            <ion-col class=\"league__table__content__member__name\">\n              <h4>{{member.gameweekTransfers}} <ion-text *ngIf=\"member.gameweekTransfersCost > 0\" color=\"danger\"\n                  style=\"font-size: 0.7em;\">(-{{ member.gameweekTransfersCost }})</ion-text>\n              </h4>\n              <h6>Transfers</h6>\n            </ion-col>\n            <ion-col class=\"league__table__content__member__captain\">\n              <img [src]=\"member.team.captainImage\" [alt]=\"member.team.captainName\">\n              <ion-text text-wrap>{{ member.team.captainName }} (C)</ion-text>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n    </ion-slide>\n    <ion-slide>\n      <ion-list>\n        <ion-item *ngFor=\"let message of messages\">\n          <ion-label>\n            <h2>\n                {{message.name}}\n            </h2>\n            <h3>\n                {{message.text}}\n            </h3>\n            <p>\n              {{message.timestamp}}\n            </p>\n          </ion-label>\n\n        </ion-item>\n      </ion-list>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n<ion-footer *ngIf=\"page == '1'\">\n  <ion-toolbar>\n    <ion-item lines=\"none\">\n      <ion-textarea [(ngModel)]=\"draftMessage\" placeholder=\"Enter more information here...\"></ion-textarea>\n    </ion-item>\n    <ion-button expand='block' color=\"danger\" (click)=\"sendMessage()\">Send</ion-button>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -186,6 +186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_Services_main_user_main_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Services/main-user/main-user.service */ "./src/app/Services/main-user/main-user.service.ts");
 /* harmony import */ var src_app_Services_leagues_custom_league_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Services/leagues/custom-league.service */ "./src/app/Services/leagues/custom-league.service.ts");
 /* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/index.js");
+/* harmony import */ var _Services_Chat_chat_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Services/Chat/chat.service */ "./src/app/Services/Chat/chat.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -238,14 +239,16 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var LeagueComponent = /** @class */ (function () {
-    function LeagueComponent(modalController, navParams, leaguesService, mainUserService, customLeagueService, socket) {
+    function LeagueComponent(modalController, navParams, leaguesService, mainUserService, customLeagueService, socket, chatService) {
         this.modalController = modalController;
         this.navParams = navParams;
         this.leaguesService = leaguesService;
         this.mainUserService = mainUserService;
         this.customLeagueService = customLeagueService;
         this.socket = socket;
+        this.chatService = chatService;
         this.league = null;
         this.showSpinner = true;
         this.maxTries = 5;
@@ -254,16 +257,23 @@ var LeagueComponent = /** @class */ (function () {
         this.newMemberId = null;
         this.displaySegment = 'STANDINGS';
         this.page = '0';
-        this.messages = ['heelo'];
+        this.messages = [];
         this.draftMessage = '';
     }
     LeagueComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.retrieveLeagueData();
         this.socket.connect();
+        this.chatService
+            .getMessages()
+            .then(function (res) {
+            console.log(res);
+            _this.messages = res;
+        })
+            .catch(function (err) { return console.log(err); });
         this.socket.on('new-message', function (message) {
-            _this.messages.push(message.text);
-            alert('hello new message: ' + message.text);
+            console.log(message);
+            _this.messages.push(message);
         });
     };
     LeagueComponent.prototype.selectedTab = function (index) {
@@ -313,7 +323,10 @@ var LeagueComponent = /** @class */ (function () {
         var message = this.draftMessage;
         this.draftMessage = '';
         this.socket.emit('send-message', {
-            text: message
+            text: message,
+            leagueId: this.league.id,
+            name: this.mainUserService.Name,
+            timestamp: new Date()
         });
     };
     LeagueComponent.prototype.onLeagueLoaded = function (league) {
@@ -410,7 +423,8 @@ var LeagueComponent = /** @class */ (function () {
             src_app_Services_leagues_leagues_service__WEBPACK_IMPORTED_MODULE_2__["LeaguesService"],
             src_app_Services_main_user_main_user_service__WEBPACK_IMPORTED_MODULE_4__["MainUserService"],
             src_app_Services_leagues_custom_league_service__WEBPACK_IMPORTED_MODULE_5__["CustomLeagueService"],
-            ngx_socket_io__WEBPACK_IMPORTED_MODULE_6__["Socket"]])
+            ngx_socket_io__WEBPACK_IMPORTED_MODULE_6__["Socket"],
+            _Services_Chat_chat_service__WEBPACK_IMPORTED_MODULE_7__["ChatService"]])
     ], LeagueComponent);
     return LeagueComponent;
 }());
@@ -637,6 +651,51 @@ var LeaguesPage = /** @class */ (function () {
             src_app_Services_leagues_custom_league_service__WEBPACK_IMPORTED_MODULE_5__["CustomLeagueService"]])
     ], LeaguesPage);
     return LeaguesPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/Services/Chat/chat.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/Services/Chat/chat.service.ts ***!
+  \***********************************************/
+/*! exports provided: ChatService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatService", function() { return ChatService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_request_http_request_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http-request/http-request.service */ "./src/app/Services/http-request/http-request.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ChatService = /** @class */ (function () {
+    // base_url = 'http://localhost:3000/';
+    function ChatService(httpRequest) {
+        this.httpRequest = httpRequest;
+        this.base_url = 'https://fantasy-chat-app.herokuapp.com/';
+    }
+    ChatService.prototype.getMessages = function () {
+        return this.httpRequest.fetch(this.base_url + 'messages');
+    };
+    ChatService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_http_request_http_request_service__WEBPACK_IMPORTED_MODULE_1__["HttpRequestService"]])
+    ], ChatService);
+    return ChatService;
 }());
 
 

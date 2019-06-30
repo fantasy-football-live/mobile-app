@@ -35,6 +35,10 @@ export class MainUserService {
 		return user.id;
 	}
 
+	get Id() {
+		return this.storage.get(this.userKey).then((user) => user.id);
+	}
+
 	save() {
 		this.storage.set(this.userKey, this.user);
 	}
@@ -52,14 +56,12 @@ export class MainUserService {
 		const liveData = await this.liveDataService.fetch(gameweek);
 		const soccerPlayers = await this.soccerPlayerService.getPlayers();
 
-		return await this.fantasyPlayerService
-			.createPlayer(id, liveData, soccerPlayers, gameweek)
-			.then((user) => {
-				this.user = user;
-				this.storage.set(this.userKey, user);
-				this.updateDeviceToken(this.user.id);
-				return user;
-			});
+		return await this.fantasyPlayerService.createPlayer(id, gameweek).then((user) => {
+			this.user = user;
+			this.storage.set(this.userKey, user);
+			this.updateDeviceToken(this.user.id);
+			return user;
+		});
 	}
 
 	private updateDeviceToken(id: number) {

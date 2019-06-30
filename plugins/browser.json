@@ -33,6 +33,9 @@
     },
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.fantasy.live"
+    },
+    "cordova-android-support-gradle-release": {
+      "PACKAGE_NAME": "com.fantasy.live"
     }
   },
   "dependent_plugins": {

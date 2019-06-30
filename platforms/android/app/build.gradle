@@ -92,6 +92,7 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../cordova-plugin-firebase/live-build.gradle"
+apply from: "../cordova-android-support-gradle-release/live-cordova-android-support-gradle-release.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -272,7 +273,7 @@ dependencies {
     compile "com.google.firebase:firebase-messaging:+"
     compile "com.google.firebase:firebase-config:+"
     compile "com.google.firebase:firebase-perf:+"
-    compile "com.android.support:support-annotations:27.+"
+    compile "com.android.support:support-annotations:27.1.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

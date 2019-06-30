@@ -4,24 +4,7 @@
             "outputFile": "/Users/apple/Documents/Projects/FantasyFootballLive/mobile-app/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ja/values-ja.xml",
             "map": [
                 {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/34fcfa0919d5968b75e4788e05df5b5b/res/values-ja/values-ja.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "21",
-                        "startColumns": "4",
-                        "startOffsets": "2651",
-                        "endColumns": "100",
-                        "endOffsets": "2747"
-                    }
-                },
-                {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/c6f909d89080f1addcc4c5f3f720f717/res/values-ja/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/firebase-messaging-19.0.0.aar/e587b2c51ca59c9372ad211d31ad1a0b/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/397ab6469a06155fb5ddfca4ab778c4c/res/values-ja/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/da98e6b4cc19fa8352172fdc0d38d9d7/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-16.0.8.aar/60d6d47209d4c0d76adb3d85e7c8839b/res/values-ja/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-17.0.0.aar/12bcf4af863a67ab5564b981bbf591fb/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4,5,6",
                         "startColumns": "0,0,0",
@@ -72,7 +55,24 @@
                     }
                 },
                 {
-                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.2.0.aar/a59bed95dab6cd5844e3f0ee5ecaa014/res/values-ja/values.xml",
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/6021176432424020ad355e9fe24894d6/res/values-ja/values-ja.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "21",
+                        "startColumns": "4",
+                        "startOffsets": "2651",
+                        "endColumns": "100",
+                        "endOffsets": "2747"
+                    }
+                },
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/play-services-basement-17.0.0.aar/a7b230453fac3e684925e390a2a3e8a2/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

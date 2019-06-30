@@ -847,10 +847,13 @@ var HttpRequestService = /** @class */ (function () {
         if (params === void 0) { params = {}; }
         if (header === void 0) { header = {}; }
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.fetchData(url, params, header).catch(function (err) { return console.log(err); })];
-                    case 1: return [2 /*return*/, _a.sent()];
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this.parseJsonData;
+                        return [4 /*yield*/, this.fetchData(url, params, header)];
+                    case 1: return [2 /*return*/, _a.apply(this, [_b.sent()])];
                 }
             });
         });
@@ -868,7 +871,7 @@ var HttpRequestService = /** @class */ (function () {
         if (this.device.cordova) {
             return JSON.parse(res.data);
         }
-        return res.json();
+        return res;
     };
     /**
      * @description makes http calls
@@ -1154,9 +1157,12 @@ var StaticDataService = /** @class */ (function () {
                                     _a.label = 4;
                                 case 4:
                                     this.staticData = data;
-                                    nextDeadline = data.next_event_fixtures[0]
-                                        ? data.next_event_fixtures[0].deadline_time
-                                        : null;
+                                    nextDeadline = null;
+                                    if (data.next_event_fixtures.length) {
+                                        nextDeadline = data.next_event_fixtures[0]
+                                            ? data.next_event_fixtures[0].deadline_time
+                                            : null;
+                                    }
                                     this.storage.set(this.updateDataTime, nextDeadline);
                                     this.storage.set(this.storageKey, this.staticData);
                                     return [2 /*return*/, returnValue != null ? data[returnValue] : data];

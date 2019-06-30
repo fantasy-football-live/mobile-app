@@ -186,6 +186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_Services_main_user_main_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Services/main-user/main-user.service */ "./src/app/Services/main-user/main-user.service.ts");
 /* harmony import */ var src_app_Services_leagues_custom_league_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Services/leagues/custom-league.service */ "./src/app/Services/leagues/custom-league.service.ts");
 /* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/index.js");
+/* harmony import */ var _Services_Chat_chat_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Services/Chat/chat.service */ "./src/app/Services/Chat/chat.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -238,14 +239,16 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var LeagueComponent = /** @class */ (function () {
-    function LeagueComponent(modalController, navParams, leaguesService, mainUserService, customLeagueService, socket) {
+    function LeagueComponent(modalController, navParams, leaguesService, mainUserService, customLeagueService, socket, chatService) {
         this.modalController = modalController;
         this.navParams = navParams;
         this.leaguesService = leaguesService;
         this.mainUserService = mainUserService;
         this.customLeagueService = customLeagueService;
         this.socket = socket;
+        this.chatService = chatService;
         this.league = null;
         this.showSpinner = true;
         this.maxTries = 5;
@@ -261,7 +264,15 @@ var LeagueComponent = /** @class */ (function () {
         var _this = this;
         this.retrieveLeagueData();
         this.socket.connect();
+        this.chatService
+            .getMessages()
+            .then(function (res) {
+            console.log(res);
+            _this.messages = res;
+        })
+            .catch(function (err) { return console.log(err); });
         this.socket.on('new-message', function (message) {
+            console.log(message);
             _this.messages.push(message);
         });
     };
@@ -412,7 +423,8 @@ var LeagueComponent = /** @class */ (function () {
             src_app_Services_leagues_leagues_service__WEBPACK_IMPORTED_MODULE_2__["LeaguesService"],
             src_app_Services_main_user_main_user_service__WEBPACK_IMPORTED_MODULE_4__["MainUserService"],
             src_app_Services_leagues_custom_league_service__WEBPACK_IMPORTED_MODULE_5__["CustomLeagueService"],
-            ngx_socket_io__WEBPACK_IMPORTED_MODULE_6__["Socket"]])
+            ngx_socket_io__WEBPACK_IMPORTED_MODULE_6__["Socket"],
+            _Services_Chat_chat_service__WEBPACK_IMPORTED_MODULE_7__["ChatService"]])
     ], LeagueComponent);
     return LeagueComponent;
 }());
@@ -639,6 +651,51 @@ var LeaguesPage = /** @class */ (function () {
             src_app_Services_leagues_custom_league_service__WEBPACK_IMPORTED_MODULE_5__["CustomLeagueService"]])
     ], LeaguesPage);
     return LeaguesPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/Services/Chat/chat.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/Services/Chat/chat.service.ts ***!
+  \***********************************************/
+/*! exports provided: ChatService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatService", function() { return ChatService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_request_http_request_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http-request/http-request.service */ "./src/app/Services/http-request/http-request.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ChatService = /** @class */ (function () {
+    // base_url = 'http://localhost:3000/';
+    function ChatService(httpRequest) {
+        this.httpRequest = httpRequest;
+        this.base_url = 'https://fantasy-chat-app.herokuapp.com/';
+    }
+    ChatService.prototype.getMessages = function () {
+        return this.httpRequest.fetch(this.base_url + 'messages');
+    };
+    ChatService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_http_request_http_request_service__WEBPACK_IMPORTED_MODULE_1__["HttpRequestService"]])
+    ], ChatService);
+    return ChatService;
 }());
 
 

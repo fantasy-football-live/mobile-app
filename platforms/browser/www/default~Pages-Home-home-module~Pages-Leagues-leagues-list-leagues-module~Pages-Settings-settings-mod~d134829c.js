@@ -1104,6 +1104,13 @@ var MainUserService = /** @class */ (function () {
     MainUserService.prototype.save = function () {
         this.storage.set(this.userKey, this.user);
     };
+    Object.defineProperty(MainUserService.prototype, "Name", {
+        get: function () {
+            return this.user.name;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * @description creates the main user of the app
      * @param id fpl id of user

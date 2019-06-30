@@ -36,7 +36,7 @@ export class LeaguesService {
 				return Promise.all(
 					members.map((memberId: number) =>
 						this.fantasyPlayerService
-							.createPlayer(memberId, liveData, soccerPlayers, currentGameweek)
+							.createPlayer(memberId, currentGameweek)
 							.catch(() => {
 								// create new player with just basic info
 								const p = new FantasyPlayer();
@@ -55,11 +55,7 @@ export class LeaguesService {
 						membersMap.set(player.id, player);
 					}
 				}
-				const newLeague = new League(
-					id,
-					name,
-					membersMap
-				);
+				const newLeague = new League(id, name, membersMap);
 				return newLeague;
 			});
 	}
@@ -67,7 +63,7 @@ export class LeaguesService {
 		const leagueData = await this.httpRequestService.fetch(
 			`https://fantasy.premierleague.com/drf/leagues-classic-standings/${id}`
 		);
-		const membersIds = leagueData.standings.results.map(member => member.entry);
+		const membersIds = leagueData.standings.results.map((member) => member.entry);
 		return this.createLeague(membersIds, leagueData.league.name, leagueData.league.id);
 	}
 }

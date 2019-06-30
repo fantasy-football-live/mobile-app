@@ -24,7 +24,7 @@ export class NewsPage implements OnInit {
 	 * @description fetches the latest posts from reddit
 	 */
 	getLatestPosts() {
-		this.redditService.getLatestLinkPosts().then((posts) => {
+		this.redditService.getLatestSelfPosts().then((posts) => {
 			this.latestPosts = posts;
 			this.showSpinner = false;
 		});
