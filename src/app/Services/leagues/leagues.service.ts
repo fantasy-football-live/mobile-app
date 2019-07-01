@@ -6,6 +6,7 @@ import { LiveDataService } from '../live-data/live.data.service';
 import { StaticDataService } from '../static-data/static.data.service';
 import { SoccerPlayerService } from '../soccer-player/soccerplayer.service';
 import FantasyPlayer from 'src/app/Models/FantasyPlayer';
+import Urls from '../../Config/Urls';
 
 @Injectable({
 	providedIn: 'root'
@@ -55,19 +56,15 @@ export class LeaguesService {
 						membersMap.set(player.id, player);
 					}
 				}
-				const newLeague = new League(
-					id,
-					name,
-					membersMap
-				);
+				const newLeague = new League(id, name, membersMap);
 				return newLeague;
 			});
 	}
 	async getLeague(id: number): Promise<League> {
 		const leagueData = await this.httpRequestService.fetch(
-			`https://fantasy.premierleague.com/drf/leagues-classic-standings/${id}`
+			`${Urls.base}leagues-classic/${id}/standings`
 		);
-		const membersIds = leagueData.standings.results.map(member => member.entry);
+		const membersIds = leagueData.standings.results.map((member) => member.entry);
 		return this.createLeague(membersIds, leagueData.league.name, leagueData.league.id);
 	}
 }

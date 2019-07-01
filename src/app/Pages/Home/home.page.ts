@@ -26,8 +26,12 @@ export class HomePage implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.loadFixtures();
+	}
+
+	async loadFixtures() {
 		Promise.all([
-			this.staticDataService.getUpcomingFixtures(),
+			this.fixtureService.getUpcomingFixtures(),
 			this.staticDataService.getTeams()
 		]).then(([ fixtures, teams ]) => {
 			this.upcomingFixtures = this.fixtureService.createFixtureList(fixtures, teams);

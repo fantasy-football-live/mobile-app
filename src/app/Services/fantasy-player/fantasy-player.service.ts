@@ -40,54 +40,40 @@ export class FantasyPlayerService {
 		currentGameweek: number
 	): Promise<FantasyPlayer> {
 		const key = `id-${id} gameweek-${currentGameweek}`;
-		// tslint:disable-next-line: prefer-const
-		let stored = await this.storage.get(key),
-			userGameweekData = null,
-			playerData = null,
-			team = null,
-			previousGameweeksHistory = null,
-			newFantasyPlayer = null;
 
-		if (!stored) {
-			userGameweekData = await this.gameweekDataService.getGameweekData(id, currentGameweek);
-			previousGameweeksHistory = await this.gameweekHistoryService.fetch(id);
-			playerData = this.parsePlayerData(
-				userGameweekData,
-				previousGameweeksHistory,
-				currentGameweek
-			),
-			team = new Team(id, playerData.teamName, playerData.lastWeekOverallPoints),
-			newFantasyPlayer = new FantasyPlayer(
-					playerData.activeChip,
-					playerData.bank,
-					playerData.value,
-					playerData.countryImage,
-					0,
-					playerData.gameweekTransfers,
-					playerData.gameweekTransfersCost,
-					id,
-					playerData.leagues,
-					playerData.name,
-					playerData.overallRank,
-					team
-			);
+		const userGameweekData = await this.gameweekDataService.getGameweekData(
+			id,
+			currentGameweek
+		);
+		const previousGameweeksHistory = await this.gameweekHistoryService.fetch(id);
+		const playerData = this.parsePlayerData(
+			userGameweekData,
+			previousGameweeksHistory,
+			currentGameweek
+		);
+		const team = new Team(id, playerData.teamName, playerData.lastWeekOverallPoints);
+		const newFantasyPlayer = new FantasyPlayer(
+			playerData.activeChip,
+			playerData.bank,
+			playerData.value,
+			playerData.countryImage,
+			0,
+			playerData.gameweekTransfers,
+			playerData.gameweekTransfersCost,
+			id,
+			playerData.leagues,
+			playerData.name,
+			playerData.overallRank,
+			team
+		);
 
-			this.storage.set(key, {
-				userGameweekData,
-				previousGameweeksHistory,
-				playerData,
-				team,
-				newFantasyPlayer
-			});
-
-		} else {
-			userGameweekData = stored.userGameweekData;
-			previousGameweeksHistory = stored.previousGameweeksHistory;
-			playerData = stored.playerData;
-			team = new Team(id, playerData.teamName, playerData.lastWeekOverallPoints);
-			newFantasyPlayer = stored.newFantasyPlayer;
-			newFantasyPlayer.team = team;
-		}
+		this.storage.set(key, {
+			userGameweekData,
+			previousGameweeksHistory,
+			playerData,
+			team,
+			newFantasyPlayer
+		});
 
 		this.populateSquad(playerData.picks, newFantasyPlayer, liveData, soccerPlayers);
 		return newFantasyPlayer;
