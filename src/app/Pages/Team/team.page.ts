@@ -19,9 +19,12 @@ export class TeamPage implements OnInit {
 	) {}
 
 	ngOnInit() {
-		if (this.mainUserService.user) {
-			this.loadUpcomingFixtures().then(() => (this.showSpinner = false));
+		if (this.mainUserService.user.team != null) {
+			this.showSpinner = false;
 		}
+		// if (this.mainUserService.user) {
+		// 	this.loadUpcomingFixtures().then(() => (this.showSpinner = false));
+		// }
 	}
 
 	async loadFixtures(players: SoccerPlayer[]) {

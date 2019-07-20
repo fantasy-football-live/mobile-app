@@ -20,12 +20,13 @@ export class TeamPageComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.transferService.getGameweekTransfers(this.fantasyPlayer.team.id).then((transfers) => {
-			for (const transfer of transfers) {
-				this.gameweekTransfers.push(transfer);
-			}
-			this.showSpinner = false;
-		});
+		// this.transferService.getGameweekTransfers(this.fantasyPlayer.team.id).then((transfers) => {
+		// 	for (const transfer of transfers) {
+		// 		this.gameweekTransfers.push(transfer);
+		// 	}
+		// 	this.showSpinner = false;
+		// });
+		this.showSpinner = false;
 	}
 
 	closeModal() {

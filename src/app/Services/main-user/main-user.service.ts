@@ -7,13 +7,18 @@ import { LiveDataService } from '../live-data/live.data.service';
 import { StaticDataService } from '../static-data/static.data.service';
 import { SoccerPlayerService } from '../soccer-player/soccerplayer.service';
 import { CustomLeagueService } from '../leagues/custom-league.service';
+import { HttpRequestService } from '../http-request/http-request.service';
+import Team from 'src/app/Models/Team';
+import { MyTeamService } from '../MyTeam/my-team.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class MainUserService {
-	public user: FantasyPlayer;
+	public user: FantasyPlayer = null;
+	public token = '';
 	private userKey = 'user';
+	private base_url = 'http://127.0.0.1:5000/';
 
 	constructor(
 		private storage: Storage,
@@ -21,8 +26,9 @@ export class MainUserService {
 		private liveDataService: LiveDataService,
 		private staticDataService: StaticDataService,
 		private fcmService: FcmService,
-		private soccerPlayerService: SoccerPlayerService,
-		private customLeagueService: CustomLeagueService
+		private teamService: MyTeamService,
+		private customLeagueService: CustomLeagueService,
+		private httpRequest: HttpRequestService
 	) {}
 
 	async loadSavedUser() {
@@ -45,17 +51,13 @@ export class MainUserService {
 	 */
 	async createUser(id: number): Promise<FantasyPlayer> {
 		const gameweek = await this.staticDataService.getCurrentGameweek();
-		const liveData = await this.liveDataService.fetch(gameweek);
-		const soccerPlayers = await this.soccerPlayerService.getPlayers();
 
-		return await this.fantasyPlayerService
-			.createPlayer(id, liveData, soccerPlayers, gameweek)
-			.then((user) => {
-				this.user = user;
-				this.storage.set(this.userKey, user);
-				this.updateDeviceToken(this.user.id);
-				return user;
-			});
+		return await this.fantasyPlayerService.createPlayer(id, gameweek).then((user) => {
+			this.user = user;
+			this.storage.set(this.userKey, user);
+			this.updateDeviceToken(this.user.id);
+			return user;
+		});
 	}
 
 	private updateDeviceToken(id: number) {
@@ -63,7 +65,6 @@ export class MainUserService {
 	}
 
 	async updateUser(id: number) {
-
 		// keep custom league and clear rest of the data
 		const customLeagues = await this.customLeagueService.getLeagues();
 		this.storage.clear();
@@ -73,5 +74,43 @@ export class MainUserService {
 		return await this.createUser(id);
 	}
 
-	getLivePoints() {}
+	async login(username: string, password: string) {
+		try {
+			const res = await this.httpRequest.fetch('http://127.0.0.1:5000/login', {
+				username: username,
+				password: password
+			});
+			this.token = res.token;
+			this.storage.set('token', this.token);
+			console.log('this.token', this.token);
+			return true;
+		} catch (e) {
+			return false;
+		}
+	}
+
+	async getBasicInfo() {
+		try {
+			const res = await this.httpRequest.fetch('http://127.0.0.1:5000/me', {
+				token: this.token
+			});
+			const fantasyPlayer = new FantasyPlayer();
+			const player = res.player;
+			fantasyPlayer.id = player.id;
+			fantasyPlayer.name = player.name;
+			fantasyPlayer.countryImage = 'assets/country_flags/' + player.country + '.gif';
+			fantasyPlayer.leagues = player.leagues;
+
+			const team = await this.teamService.populateSquad(player.picks, player.name);
+			fantasyPlayer.team = team;
+			console.log('fantasyPlayer :', fantasyPlayer);
+			this.user = fantasyPlayer;
+		} catch (e) {
+			console.log('e', e);
+		}
+	}
+
+	isLoggedIn() {
+		return this.user != null;
+	}
 }

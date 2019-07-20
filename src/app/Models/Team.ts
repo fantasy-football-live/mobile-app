@@ -27,7 +27,7 @@ export default class Team {
 		Bench = [],
 		captainId = 0,
 		value = 0,
-		bank = 0,
+		bank = 0
 	) {
 		this.id = id;
 		this.name = name;

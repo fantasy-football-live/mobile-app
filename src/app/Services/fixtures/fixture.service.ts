@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Urls from '../../Config/Urls';
+import Urls from '../../Constants/Urls';
 import { HttpRequestService } from '../http-request/http-request.service';
 import { StaticDataService } from '../static-data/static.data.service';
 @Injectable({

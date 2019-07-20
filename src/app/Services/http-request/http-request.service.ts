@@ -21,11 +21,7 @@ export class HttpRequestService {
 	 * @param url string
 	 */
 	public async fetch(url: string, params: {} = {}, header: {} = {}) {
-		return await this.fetchData(
-			url,
-			params,
-			header
-		).catch(err => console.log(err));
+		return await this.fetchData(url, params, header).catch((err) => console.log(err));
 	}
 
 	/**
@@ -50,11 +46,14 @@ export class HttpRequestService {
 	 * @description makes http calls
 	 * @param url {string}
 	 */
-	private fetchData(url: string, param: {} = null, header: {} = null): Promise<any> {
+	private fetchData(url: string, body: {} = null, header: {} = null): Promise<any> {
 		if (this.device.cordova) {
-			return this.http.get(url, param, header);
+			return this.http.get(url, body, header);
 		}
-
+		console.log(body);
+		if (body) {
+			return this.testHttp.post(url, body, {}).toPromise();
+		}
 		return this.testHttp.get(url).toPromise();
 	}
 }

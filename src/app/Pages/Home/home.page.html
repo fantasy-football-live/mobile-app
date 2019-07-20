@@ -1,31 +1,35 @@
 <app-header [title]="'HOME'"></app-header>
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 <ion-content padding *ngIf="!showSpinner">
-  <div *ngIf="!user" class="input-container">
+  <div *ngIf="!mainUserService.user" class="input-container">
     <ion-item>
-      <ion-label position="stacked">
-        Enter your FPL Id to begin...
-      </ion-label>
-      <ion-input type="number" [(ngModel)]="FplId">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input clearInput type="email" [(ngModel)]="username">
       </ion-input>
     </ion-item>
-    <ion-button (click)="onFantasyIdEntered(FplId)" shape="round" expand="block" color="danger">Enter</ion-button>
+    <ion-item>
+          <ion-label position="floating">
+            Password
+          </ion-label>
+          <ion-input clearInput type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-button (click)="onLoginBtnPressed(username, password)" shape="round" expand="block" color="danger">Enter</ion-button>
     <p class="privacy__link">Check out our privacy policy <a target="_blank"
         href="https://www.privacypolicies.com/privacy/view/5aab9410c306ad31ac1853eeeebe6b6a">here</a></p>
   </div>
 
-  <div *ngIf="user">
+  <div *ngIf="mainUserService.user">
     <div class="home__card">
       <div class="home__card__badge">
-        <img [src]="user.countryImage" alt="">
+        <img [src]="mainUserService.user.countryImage" alt="">
       </div>
       <div class="home__card__name">
-        <h6> {{ user.name }} </h6>
-        <p> {{ user.team.name }}</p>
+        <h6> {{ mainUserService.user.name }} </h6>
+        <p> {{ mainUserService.user.team.name }}</p>
       </div>
 
       <div class="home__card__points">
-        <h6>{{ user.team.overallPoints }}</h6>
+        <h6>{{ mainUserService.user.team.overallPoints }}</h6>
         <p>Total Points</p>
       </div>
     </div>
@@ -34,12 +38,12 @@
       <ion-label>
         <ion-text color="danger">
           Transfers:</ion-text>
-        {{ user.gameweekTransfers }}
+        {{ mainUserService.user.gameweekTransfers }}
       </ion-label>
       <ion-label class="home__divider__rank" slot="end">
         <ion-text color="danger">
           Rank:</ion-text>
-        {{ user.overallRank }}
+        {{ mainUserService.user.overallRank }}
       </ion-label>
     </ion-item-divider>
     <ion-grid class="home__services">

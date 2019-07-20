@@ -4,21 +4,25 @@ import { LeagueComponent } from 'src/app/Pages/Leagues/leagues-detail/league.com
 import { MainUserService } from 'src/app/Services/main-user/main-user.service';
 import { CustomLeaguesComponent } from '../custom-leagues/custom-leagues.component';
 import { CustomLeagueService } from 'src/app/Services/leagues/custom-league.service';
-
+import { Router } from '@angular/router';
 @Component({
 	selector: 'app-leagues',
 	templateUrl: './leagues.page.html',
 	styleUrls: [ './leagues.page.scss' ]
 })
 export class LeaguesPage implements OnInit {
-
 	constructor(
 		private modalController: ModalController,
 		public mainUserService: MainUserService,
-		public customLeagueService: CustomLeagueService
+		public customLeagueService: CustomLeagueService,
+		private router: Router
 	) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		if (!this.mainUserService.user.leagues || this.mainUserService.user.leagues.length == 0) {
+			this.router.navigate([ '/home' ]);
+		}
+	}
 
 	/**
 	 * @param leagueId id of league

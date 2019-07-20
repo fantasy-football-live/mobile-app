@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { HttpRequestService } from '../http-request/http-request.service';
-import SoccerPlayer from 'src/app/Models/SoccerPlayer';
-import Url from '../../Config/Urls';
+import Urls from '../../Constants/Urls';
+import { MainUserService } from '../main-user/main-user.service';
+
 @Injectable({
 	providedIn: 'root'
 })
@@ -29,26 +30,34 @@ export class StaticDataService {
 			// } else {
 			// 	data = await this.httpRequestService.fetch(Url.bootstrap);
 			// }
+			const token = await this.storage.get('token');
 			if (this.staticData) {
 				return returnValue != null ? this.staticData[returnValue] : this.staticData;
 			}
-			this.staticData = await this.httpRequestService.fetch(Url.bootstrap);
-			const nextDeadline = this.staticData.events[0]
-				? this.staticData.events[0].deadline_time
-				: null;
+			this.staticData = await this.httpRequestService.fetch('http://127.0.0.1:5000/static', {
+				token: token
+			});
+			// const nextDeadline = this.staticData.events[0]
+			// 	? this.staticData.events[0].deadline_time
+			// 	: null;
 
-			this.storage.set(this.updateDataTime, nextDeadline);
+			// this.storage.set(this.updateDataTime, nextDeadline);
 			this.storage.set(this.storageKey, this.staticData);
-			return returnValue != null ? this.staticData[returnValue] : this.staticData;
+			return returnValue !== null ? this.staticData[returnValue] : this.staticData;
 		});
 	}
 
 	public async getCurrentGameweek(): Promise<number> {
 		if (this.staticData) {
-			return this.staticData['current-event'];
+			if (this.staticData['current-event']) {
+				return this.staticData['current-event'];
+			} else {
+				return 1;
+			}
 		}
 
-		return this.fetch('current-event');
+		const gameweek = this.fetch('current-event') || 1;
+		return gameweek;
 	}
 
 	public async getUpcomingGameweek(): Promise<number> {
@@ -63,7 +72,7 @@ export class StaticDataService {
 	}
 
 	public async getPlayers(): Promise<any[]> {
-		return this.fetch('elements');
+		return this.fetch('players');
 	}
 
 	public async getPositionLabel(positionId: number): Promise<string> {

@@ -6,7 +6,7 @@ import { LiveDataService } from '../live-data/live.data.service';
 import { StaticDataService } from '../static-data/static.data.service';
 import { SoccerPlayerService } from '../soccer-player/soccerplayer.service';
 import FantasyPlayer from 'src/app/Models/FantasyPlayer';
-import Urls from '../../Config/Urls';
+import Urls from '../../Constants/Urls';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,7 +37,7 @@ export class LeaguesService {
 				return Promise.all(
 					members.map((memberId: number) =>
 						this.fantasyPlayerService
-							.createPlayer(memberId, liveData, soccerPlayers, currentGameweek)
+							.createPlayer(memberId, currentGameweek)
 							.catch(() => {
 								// create new player with just basic info
 								const p = new FantasyPlayer();
